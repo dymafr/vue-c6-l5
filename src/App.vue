@@ -1,25 +1,16 @@
 <template>
-  <ul>
-    <template v-for="({ prenom, id }, index) of utilisateurs" :key="id">
-      <li v-if="prenom != 'Paul'">
-        {{ prenom }}
-      </li>
-    </template>
-  </ul>
+  <h1 v-memo="[title]">
+    <p>{{ title }}</p>
+  </h1>
+  <input type="text" v-model="input" />
+  <p>{{ input }}</p>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
-const utilisateurs = reactive([
-  { prenom: 'Jean', id: 1 },
-  { prenom: 'Paul', id: 2 },
-  { prenom: 'Pierre', id: 3 },
-]);
-
-setTimeout(() => {
-  utilisateurs.push({ prenom: 'Julie', age: 40 });
-}, 3000);
+const title = ref('Je suis un titre');
+const input = ref('');
 </script>
 
 <style scoped lang="scss"></style>
